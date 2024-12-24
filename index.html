@@ -7,7 +7,65 @@
     <link rel="stylesheet" href="styles.css">
     <script src="script.js" defer></script>
 </head>
+
 <body>
+
+    <div class="page-layout-container">
+
+        <div class="right-container">
+            <header class="hero">
+                My Library
+                <div>Icon</div>
+            </header>
+            <header>
+                Sort by: <select class="sort-by"></select>
+            </header>
+            <div class="book-card-container">
+                <div class="book-card">
+
+                </div>
+                <div class="book-card">
+
+                </div>
+                <div class="book-card">
+
+                </div>
+                <div class="book-card">
+
+                </div>
+            </div>
+        </div>
+
+        <div class="sidebar-new-book">
+            <h3>Add New Book</h3>
+            <form id="new-book">
+                <ul>
+                    <li>
+                        <label for="title">Title: </label>
+                        <input type="text" id="title" name="title">
+                    </li>
+                    <li>
+                        <label for="author">Author: </label>
+                        <input type="text" id="author" name="author">
+                    </li>
+                    <li>
+                        <label for="pages">Number of pages: </label>
+                        <input type="number" id="pages" name="pages">
+                    </li>
+                    <li>
+                        <label for="genre">Genre: </label>
+                        <input type="text" id="genre" name="pages">
+                    </li>
+                    <li>
+                        <label  for="read">Read: </label>
+                        <input type="checkbox" id="read" name="read">
+                    </li>
+                </ul>
+                <button type="submit" form="new-book">+ Add</button>
+            </form>
+        </div>
+    </div>
+
     
 </body>
 </html>
