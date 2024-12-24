@@ -33,3 +33,56 @@
   }
 
   /* End reset */
+
+
+
+
+  .page-layout-container {
+    display: grid;
+    grid-template-columns: 1fr 4fr;
+    height: 100vh;
+  }
+
+  .right-container {
+    display: grid;
+    grid-template-rows: 15% 5% 1fr;
+  }
+
+
+  .hero {
+    background-color: lightcoral;
+  }
+
+  .hero + header {
+    background-color: lightsalmon;
+  }
+
+  .book-card-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min-content, 4em));
+    grid-template-rows: repeat(auto-fit, minmax(min-content, 4em));
+    gap: 1em;
+    background-color: rgb(230, 195, 175);
+  }
+
+  .book-card {
+    padding: 10px;
+    box-shadow: 3px 3px 5px 2px rgba(0, 0, 0, 0.15);
+    background-color: white;
+    color: #808080;
+    border-radius: 10px;
+  }
+
+
+  .sidebar-new-book {
+    grid-row: 1 / -1;
+    background-color: rgb(223, 83, 83);
+  }
+
+  input::-webkit-outer-spin-button,
+  input::-webkit-inner-spin-button,
+  input[type=number] {
+    -webkit-appearance: none;
+    margin: 0;
+    -moz-appearance: textfield;
+}
