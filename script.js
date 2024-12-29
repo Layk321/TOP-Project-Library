@@ -18,26 +18,43 @@ myLibrary.forEach((book) => {
 
 
 
-function Book(title, author, genre, pages, read) {
+
+function Book(title, author, genre, pages) {
     this.title = title;
     this.author =  author;
     this.genre = genre;
     this.pages = pages;
-    this.read = read;
+    //this.read = read; - removed for now, want to incorporate as a check on the card itself (remember to add back into argument list if reinstated)
     // this.info = function() {
     //     return this.title + ' by ' + this.author + ', ' + this.pages + ' pages, ' + 
     //     (this.read === true ? 'have read' : 'not read yet');
     // }
 }
 
-function addBookToLibrary(title, author, genre, pages) {
-    new Book(title, author, genre, pages);
+function addBookToLibrary(title, author, pages, genre) {
+    const newBook = new Book(title, author, pages, genre);
+    myLibrary.push(newBook);
+    console.log(myLibrary);
     
+    //call separate function to create new element from last myLibrary entry
 }
 
-const createBookButton = document.querySelector('.button');
-createBookButton.addEventListener('click', addBookToLibrary);
+// const addBookForm = document.querySelector('button');
+// addBookForm.addEventListener('click', function(event) {
+//     addBookToLibrary;
+//     event.preventDefault();
+// });
 
+const addBookForm = document.querySelector('#new-book');
+addBookForm.addEventListener('submit', function(event) {
+    event.preventDefault();
+    const title = event.currentTarget.title.value;
+    const author = event.currentTarget.author.value;
+    const pages = event.currentTarget.pages.value;
+    const genre = event.currentTarget.genre.value;
+    addBookToLibrary(title, author, pages, genre);
+    addBookForm.reset();
+})
 
 
 // console.log(theHobbit.info());
