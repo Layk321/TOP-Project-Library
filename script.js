@@ -16,9 +16,8 @@ function Book(title, author, pages, genre) {
     this.author =  author;
     this.pages = pages;
     this.genre = genre;
-    this.read = read;
+    this.read = false;
     myLibrary.push(this);
-    this.bookId = myLibrary.indexOf(this);
 };
 
 function addBookToLibrary(title, author, pages, genre) {
@@ -31,7 +30,8 @@ function createCard() {
     const book = myLibrary.at(-1);
     const newBookCard = document.createElement('div');
     newBookCard.className = 'book-card';
-    removeCard(newBookCard);
+    newBookCard.setAttribute('book-id', myLibrary.indexOf(book));
+    removeBookButton(newBookCard);
     toggleReadStatus(newBookCard);
     bookCardContainer.appendChild(newBookCard);
 
@@ -62,7 +62,7 @@ function createCard() {
     }
 };
 
-function removeCard(newBookCard) { //should this also remove the array entry?
+function removeBookButton(newBookCard) { //should this also remove the array entry?
     const deleteButton = document.createElement('button');
     deleteButton.textContent = 'X';
     deleteButton.className = 'delete-button';
