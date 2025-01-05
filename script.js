@@ -10,10 +10,10 @@ const myLibrary = [theHobbit, endersGame, courtroom302, sapiens];
 const bookCardContainer = document.querySelector('.book-card-container');
 
 myLibrary.forEach((book) => {
-    const newBook = document.createElement('div');
-    newBook.className = 'book-card';
-    newBook.textContent = book.title;
-    bookCardContainer.appendChild(newBook);
+    const newBookCard = document.createElement('div');
+    newBookCard.className = 'book-card';
+    newBookCard.textContent = book.title;
+    bookCardContainer.appendChild(newBookCard);
 });
 
 
@@ -22,48 +22,61 @@ function Book(title, author, pages, genre) {
     this.author =  author;
     this.pages = pages;
     this.genre = genre;
+    this.read = read;
     //this.read = read; - removed for now, want to incorporate as a check on the card itself (remember to add back into argument list if reinstated)
 };
 
 function addBookToLibrary(title, author, pages, genre) {
-    const newBook = new Book(title, author, pages, genre);
-    myLibrary.push(newBook);
+    const newBookCard = new Book(title, author, pages, genre);
+    myLibrary.push(newBookCard);
     console.log(myLibrary); //remember to remove
     createCard();
 };
 
 function createCard() {
     const book = myLibrary.at(-1);
-    const newBook = document.createElement('div');
-    newBook.className = 'book-card';
-    bookCardContainer.appendChild(newBook);
+    const newBookCard = document.createElement('div');
+    newBookCard.className = 'book-card';
+    removeCard(newBookCard);
+    toggleReadStatus(newBookCard);
+    bookCardContainer.appendChild(newBookCard);
 
     const bookTitle = document.createElement('p');
     bookTitle.className = 'book-title';
     bookTitle.textContent = `Title: ${book.title}`;
-    newBook.append(bookTitle);
+    newBookCard.append(bookTitle);
     
     if (book.author) {
         const bookAuthor = document.createElement('p');
-        bookAuthor.className = 'book-author'; //I could probably remove creating the class names and:
-        bookAuthor.textContent = `Author: ${book.author}`; //use CSS to select p's beggining with what i need for styling, in this case beginning with Author
-        bookAuthor ? newBook.append(bookAuthor) : null;
+        bookAuthor.className = 'book-author';
+        bookAuthor.textContent = `Author: ${book.author}`;
+        bookAuthor ? newBookCard.append(bookAuthor) : null;
     }
 
     if (book.pages) {
         const bookPages = document.createElement('p');
         bookPages.className = 'book-pages';
         bookPages.textContent = `Number of Pages: ${book.pages}`;
-        bookPages ? newBook.append(bookPages) : null;
+        bookPages ? newBookCard.append(bookPages) : null;
     }
 
     if (book.genre) {
         const bookGenre = document.createElement('p');
         bookGenre.className = 'book-genre';
         bookGenre.textContent = `Genre: ${book.genre}`;
-        bookGenre ? newBook.append(bookGenre) : null;
+        bookGenre ? newBookCard.append(bookGenre) : null;
     }
 };
+
+function removeCard(newBookCard) { //should this also remove the array entry?
+    const deleteButton = document.createElement('button');
+    deleteButton.textContent = 'X';
+    deleteButton.className = 'delete-button';
+    newBookCard.append(deleteButton);
+    deleteButton.addEventListener('click', function() {
+        this.parentNode.remove();
+    })
+}
 
 const addBookForm = document.querySelector('#new-book');
 addBookForm.addEventListener('submit', function(event) {
@@ -75,3 +88,13 @@ addBookForm.addEventListener('submit', function(event) {
     addBookToLibrary(title, author, pages, genre);
     addBookForm.reset();
 });
+
+function toggleReadStatus(newBookCard) {
+    const toggleRead = document.createElement('button');
+    toggleRead.textContent = 'X';
+    toggleRead.className = 'read-status';
+    newBookCard.append(toggleRead);
+    toggleRead.addEventListener('click', function() {
+
+    })
+}
