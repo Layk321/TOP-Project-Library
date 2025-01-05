@@ -1,11 +1,5 @@
 
-const theHobbit = new Book('The Hobbit', 'J.R.R. Tolkien', 295,'Fantasy', false);
-const endersGame = new Book("Ender's Game", 'Orson Scott Card', 324,'Science Fiction', true);
-const courtroom302 = new Book('Courtroom 302', 'Steve Bogira', 416, 'Nonfiction', true);
-const sapiens = new Book("Sapiens: A Brief History of Humankind", 'Yuval Noah Harari', 443,'Nonfiction', false);
-
-
-const myLibrary = [theHobbit, endersGame, courtroom302, sapiens];
+const myLibrary = [];
 
 const bookCardContainer = document.querySelector('.book-card-container');
 
@@ -23,12 +17,12 @@ function Book(title, author, pages, genre) {
     this.pages = pages;
     this.genre = genre;
     this.read = read;
-    //this.read = read; - removed for now, want to incorporate as a check on the card itself (remember to add back into argument list if reinstated)
+    myLibrary.push(this);
+    this.bookId = myLibrary.indexOf(this);
 };
 
 function addBookToLibrary(title, author, pages, genre) {
     const newBookCard = new Book(title, author, pages, genre);
-    myLibrary.push(newBookCard);
     console.log(myLibrary); //remember to remove
     createCard();
 };
