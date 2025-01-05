@@ -3,14 +3,6 @@ const myLibrary = [];
 
 const bookCardContainer = document.querySelector('.book-card-container');
 
-myLibrary.forEach((book) => {
-    const newBookCard = document.createElement('div');
-    newBookCard.className = 'book-card';
-    newBookCard.textContent = book.title;
-    bookCardContainer.appendChild(newBookCard);
-});
-
-
 function Book(title, author, pages, genre) {
     this.title = title;
     this.author =  author;
@@ -30,7 +22,7 @@ function createCard() {
     const book = myLibrary.at(-1);
     const newBookCard = document.createElement('div');
     newBookCard.className = 'book-card';
-    newBookCard.setAttribute('book-id', myLibrary.indexOf(book));
+    newBookCard.setAttribute('data-book-id', myLibrary.indexOf(book));
     removeBookButton(newBookCard);
     toggleReadStatus(newBookCard);
     bookCardContainer.appendChild(newBookCard);
@@ -62,13 +54,16 @@ function createCard() {
     }
 };
 
-function removeBookButton(newBookCard) { //should this also remove the array entry?
+function removeBookButton(newBookCard) {
     const deleteButton = document.createElement('button');
     deleteButton.textContent = 'X';
     deleteButton.className = 'delete-button';
     newBookCard.append(deleteButton);
     deleteButton.addEventListener('click', function() {
+        const bookIndex = parseInt(newBookCard.getAttribute('data-book-id'));
+        myLibrary.splice(bookIndex, 1);
         this.parentNode.remove();
+        updateBookCardIndices();
     })
 }
 
@@ -92,3 +87,10 @@ function toggleReadStatus(newBookCard) {
 
     })
 }
+
+function updateBookCardIndices() {
+    const bookCards = document.querySelectorAll('.book-card');
+    bookCards.forEach((bookCard, index) => {
+      bookCard.setAttribute('data-book-id', index);
+    });
+  }
