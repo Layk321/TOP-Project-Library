@@ -3,18 +3,21 @@ const myLibrary = [];
 
 const bookCardContainer = document.querySelector('.book-card-container');
 
-function Book(title, author, pages, genre) {
-    this.title = title;
-    this.author =  author;
-    this.pages = pages;
-    this.genre = genre;
-    this.read = false;
-    myLibrary.push(this);
+class Book {
+    static bookIDCounter = 1;
+    constructor(title, author, pages, genre) {
+        this.bookID = Book.bookIDCounter++;
+        this.title = title;
+        this.author = author;
+        this.pages = pages;
+        this.genre = genre;
+        this.read = false;
+        myLibrary.push(this);
+    }
 };
 
 function addBookToLibrary(title, author, pages, genre) {
     const newBookCard = new Book(title, author, pages, genre);
-    console.log(myLibrary); //remember to remove
     createCard();
 };
 
@@ -22,7 +25,7 @@ function createCard() {
     const book = myLibrary.at(-1);
     const newBookCard = document.createElement('div');
     newBookCard.className = 'book-card';
-    newBookCard.setAttribute('data-book-id', myLibrary.indexOf(book));
+    newBookCard.setAttribute('data-book-id', book.bookID);
     removeBookButton(newBookCard);
     toggleReadStatus(newBookCard);
     bookCardContainer.appendChild(newBookCard);
@@ -60,10 +63,13 @@ function removeBookButton(newBookCard) {
     deleteButton.className = 'delete-button';
     newBookCard.append(deleteButton);
     deleteButton.addEventListener('click', function() {
-        const bookIndex = parseInt(newBookCard.getAttribute('data-book-id'));
-        myLibrary.splice(bookIndex, 1);
+        const bookID = parseInt(newBookCard.getAttribute('data-book-id'));
+        const bookIndex = myLibrary.findIndex((element) => element.bookID === bookID);
+        const bookToRemove = myLibrary.find((element) => element.bookID === bookID);
+        if (bookID === bookToRemove.bookID) {
+            myLibrary.splice(bookIndex, 1);
+        }
         this.parentNode.remove();
-        updateBookCardIndices();
     })
 }
 
@@ -87,10 +93,3 @@ function toggleReadStatus(newBookCard) {
 
     })
 }
-
-function updateBookCardIndices() {
-    const bookCards = document.querySelectorAll('.book-card');
-    bookCards.forEach((bookCard, index) => {
-      bookCard.setAttribute('data-book-id', index);
-    });
-  }
