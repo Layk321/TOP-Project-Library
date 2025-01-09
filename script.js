@@ -30,30 +30,39 @@ function createCard() {
     toggleReadStatus(newBookCard);
     bookCardContainer.appendChild(newBookCard);
 
-    const bookTitle = document.createElement('p');
+    const bookTitle = document.createElement('h3');
     bookTitle.className = 'book-title';
-    bookTitle.textContent = `Title: ${book.title}`;
+    bookTitle.textContent = `${book.title}`;
     newBookCard.append(bookTitle);
     
     if (book.author) {
         const bookAuthor = document.createElement('p');
         bookAuthor.className = 'book-author';
-        bookAuthor.textContent = `Author: ${book.author}`;
-        bookAuthor ? newBookCard.append(bookAuthor) : null;
+        bookAuthor.textContent = 'Author: ';
+        const bookAuthorInput = document.createElement('span');
+        bookAuthorInput.textContent = `${book.author}`;
+        bookAuthor.append(bookAuthorInput);
+        newBookCard.append(bookAuthor);
     }
 
     if (book.pages) {
         const bookPages = document.createElement('p');
         bookPages.className = 'book-pages';
-        bookPages.textContent = `Number of Pages: ${book.pages}`;
-        bookPages ? newBookCard.append(bookPages) : null;
+        bookPages.textContent = 'Number of Pages: ';
+        const bookPagesInput = document.createElement('span');
+        bookPagesInput.textContent = `${book.pages}`;
+        bookPages.append(bookPagesInput);
+        newBookCard.append(bookPages);
     }
 
     if (book.genre) {
         const bookGenre = document.createElement('p');
         bookGenre.className = 'book-genre';
-        bookGenre.textContent = `Genre: ${book.genre}`;
-        bookGenre ? newBookCard.append(bookGenre) : null;
+        bookGenre.textContent = 'Genre: ';
+        const bookGenreInput = document.createElement('span');
+        bookGenreInput.textContent = `${book.genre}`;
+        bookGenre.append(bookGenreInput);
+        newBookCard.append(bookGenre);
     }
 };
 
