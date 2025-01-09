@@ -17,7 +17,7 @@ class Book {
 };
 
 function addBookToLibrary(title, author, pages, genre) {
-    const newBookCard = new Book(title, author, pages, genre);
+    new Book(title, author, pages, genre);
     createCard();
 };
 
@@ -90,6 +90,10 @@ function toggleReadStatus(newBookCard) {
     toggleRead.className = 'read-status';
     newBookCard.append(toggleRead);
     toggleRead.addEventListener('click', function() {
-
+        const bookID = parseInt(newBookCard.getAttribute('data-book-id'));
+        const bookToChangeReadStatus = myLibrary.find((element) => element.bookID === bookID);
+        if (bookToChangeReadStatus.read === true) {
+            bookToChangeReadStatus.read = false;
+        } else bookToChangeReadStatus.read = true;
     })
 }
