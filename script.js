@@ -96,13 +96,19 @@ addBookForm.addEventListener('submit', function(event) {
 function toggleReadStatus(newBookCard) {
     const toggleRead = document.createElement('button');
     toggleRead.textContent = 'X';
-    toggleRead.className = 'read-status';
+    toggleRead.className = 'read-status-true';
     newBookCard.append(toggleRead);
     toggleRead.addEventListener('click', function() {
         const bookID = parseInt(newBookCard.getAttribute('data-book-id'));
         const bookToChangeReadStatus = myLibrary.find((element) => element.bookID === bookID);
         if (bookToChangeReadStatus.read === true) {
             bookToChangeReadStatus.read = false;
-        } else bookToChangeReadStatus.read = true;
+            toggleRead.textContent = 'X';
+            toggleRead.className = 'read-status-false'
+        } else {
+            bookToChangeReadStatus.read = true;
+            toggleRead.textContent = '✔';
+            toggleRead.className = 'read-status-true'
+        }
     })
 }
