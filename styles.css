@@ -87,13 +87,59 @@
   }
 
 
+
+
   .sidebar-new-book {
     grid-row: 1 / -1;
     background-color: rgb(223, 83, 83);
+    display: flex;
+    flex-direction: column;
+  }
+
+  .sidebar-new-book * {
+    /* border: 1px solid blue; */
+  }
+
+  form {
+    display: flex;
+    flex-direction: column;
   }
 
   #new-book ul {
     list-style-type: none;
+    padding: 0;
+    padding-left: 0.5em;
+    padding-top: 1em;
+  }
+
+  li {
+    position: relative;
+    padding-top: 2em;
+  }
+
+  li label {
+    position: absolute;
+    top: 0.5em;
+  }
+
+  form input {
+    border-radius: 10px;
+    border: none;
+    min-width: 18em; /*need to fix this*/
+    box-shadow: 5px 5px 10px 0 rgb(143, 41, 41);
+    padding-left: 8px;
+  }
+
+  input:focus {
+    outline: none;
+  }
+
+  form button {
+    border-radius: 10px;
+    margin-top: 2em;
+    align-self: center;
+    width: 6em;
+    height: 6em;
   }
 
   input::-webkit-outer-spin-button,
