@@ -39,7 +39,7 @@
 
   .page-layout-container {
     display: grid;
-    grid-template-columns: 1fr 4fr;
+    grid-template-columns: 1fr 6fr;
     height: 100vh;
   }
 
@@ -51,6 +51,19 @@
 
   .hero {
     background-color: lightcoral;
+    font-size: 3em;
+    display: flex;
+    align-items: center;
+    flex-wrap: nowrap;
+  }
+
+  .hero h1 {
+    margin-left: 0.3em;
+    white-space: nowrap;
+  }
+
+  .hero img {
+    width: 200px;
   }
 
   .hero + header {
@@ -77,6 +90,10 @@
   .sidebar-new-book {
     grid-row: 1 / -1;
     background-color: rgb(223, 83, 83);
+  }
+
+  #new-book ul {
+    list-style-type: none;
   }
 
   input::-webkit-outer-spin-button,
