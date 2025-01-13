@@ -47,7 +47,7 @@ function createCard() {
     if (book.pages) {
         const bookPages = document.createElement('p');
         bookPages.className = 'book-pages';
-        bookPages.textContent = 'Number of Pages: ';
+        bookPages.textContent = 'Pages: ';
         const bookPagesInput = document.createElement('span');
         bookPagesInput.textContent = `${book.pages}`;
         newBookCard.append(bookPages);
