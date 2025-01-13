@@ -40,8 +40,8 @@ function createCard() {
         bookAuthor.textContent = 'Author: ';
         const bookAuthorInput = document.createElement('span');
         bookAuthorInput.textContent = `${book.author}`;
-        bookAuthor.append(bookAuthorInput);
         newBookCard.append(bookAuthor);
+        newBookCard.append(bookAuthorInput);
     }
 
     if (book.pages) {
@@ -50,8 +50,8 @@ function createCard() {
         bookPages.textContent = 'Number of Pages: ';
         const bookPagesInput = document.createElement('span');
         bookPagesInput.textContent = `${book.pages}`;
-        bookPages.append(bookPagesInput);
         newBookCard.append(bookPages);
+        newBookCard.append(bookPagesInput);
     }
 
     if (book.genre) {
@@ -60,8 +60,8 @@ function createCard() {
         bookGenre.textContent = 'Genre: ';
         const bookGenreInput = document.createElement('span');
         bookGenreInput.textContent = `${book.genre}`;
-        bookGenre.append(bookGenreInput);
         newBookCard.append(bookGenre);
+        newBookCard.append(bookGenreInput);
     }
 };
 
