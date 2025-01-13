@@ -95,7 +95,7 @@ addBookForm.addEventListener('submit', function(event) {
 function toggleReadStatus(newBookCard) {
     const toggleRead = document.createElement('button');
     toggleRead.textContent = 'X';
-    toggleRead.className = 'read-status-true';
+    toggleRead.className = 'read-status-false';
     newBookCard.append(toggleRead);
     toggleRead.addEventListener('click', function() {
         const bookID = parseInt(newBookCard.getAttribute('data-book-id'));
