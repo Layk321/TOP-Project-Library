@@ -1,8 +1,6 @@
 
 const myLibrary = [];
 
-const bookCardContainer = document.querySelector('.book-card-container');
-
 class Book {
     static bookIDCounter = 1;
     constructor(title, author, pages, genre) {
@@ -23,6 +21,7 @@ function addBookToLibrary(title, author, pages, genre) {
 
 function createCard() {
     const book = myLibrary.at(-1);
+    const bookCardContainer = document.querySelector('.book-card-container');
     const newBookCard = document.createElement('div');
     newBookCard.className = 'book-card';
     newBookCard.setAttribute('data-book-id', book.bookID);
