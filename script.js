@@ -69,6 +69,7 @@ function removeBookButton(newBookCard) {
     const deleteButton = document.createElement('button');
     deleteButton.textContent = 'X';
     deleteButton.className = 'delete-button';
+    deleteButton.setAttribute('title', 'Delete Book');
     newBookCard.append(deleteButton);
     deleteButton.addEventListener('click', function() {
         const bookID = parseInt(newBookCard.getAttribute('data-book-id'));
@@ -96,6 +97,7 @@ function toggleReadStatus(newBookCard) {
     const toggleRead = document.createElement('button');
     toggleRead.textContent = 'X';
     toggleRead.className = 'read-status-false';
+    toggleRead.setAttribute('title', 'Mark as Read');
     newBookCard.append(toggleRead);
     toggleRead.addEventListener('click', function() {
         const bookID = parseInt(newBookCard.getAttribute('data-book-id'));
