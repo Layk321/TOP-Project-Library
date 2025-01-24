@@ -102,12 +102,8 @@
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-template-rows: repeat(auto-fit, minmax(min-content, 40px)) minmax(0, auto);
-    width: clamp(250px, 20%, 400px);
+    width: clamp(250px, 100%, 400px);
   }
-
-  /* .book-card:last-child {
-
-  } */
 
   .delete-button {
     border: none;
